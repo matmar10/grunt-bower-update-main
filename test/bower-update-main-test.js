@@ -27,23 +27,23 @@ exports.bowerUpdateMain = {
     // setup here if necessary
     done();
   },
-  /*
+
   defaultOptions: function(test) {
     test.expect(1);
 
-    var actual = grunt.file.read('tmp/default_options');
-    var expected = grunt.file.read('test/expected/default_options');
-    test.equal(actual, expected, 'should describe what the default behavior is.');
+    var actual = grunt.file.read('bower.json');
+    var expected = grunt.file.read('test/expected/default-bower.json');
+    test.equal(actual, expected, 'Grunt updates bower.json using default options');
 
     test.done();
-  },*/
+  },
 
   exampleProject1: function(test) {
     test.expect(1);
 
     var actual = grunt.file.read('.tmp/example-project-1-bower.json');
     var expected = grunt.file.read('test/expected/example-project-1-bower.json');
-    test.equal(actual, expected, 'Grunt file generates bower.json with updated `main` property including all the source files specified');
+    test.equal(actual, expected, 'Grunt generates bower.json with updated `main` property including all the source files specified');
 
     test.done();
   }

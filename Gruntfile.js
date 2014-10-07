@@ -30,17 +30,16 @@ module.exports = function(grunt) {
 
     // Configuration to be run (and then tested).
     bowerUpdateMain: {
-      /*
       defaultOptions: {
-        options: {
-        },
-        files: {
-          'tmp/default_options': ['test/fixtures/testing', 'test/fixtures/123']
-        }
-      },*/
+        options: {},
+        main: [
+          '**/*.js'
+        ]
+      },
       exampleProject1: {
         options: {
           bowerFilename: './test/fixtures/example-project-1-bower.json',
+          bowerFileIndent: 4,
           outputFilename: '.tmp/example-project-1-bower.json'
         },
         main: [
