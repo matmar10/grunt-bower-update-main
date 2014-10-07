@@ -52,8 +52,14 @@ module.exports = function(grunt) {
     // Unit tests.
     nodeunit: {
       tests: ['test/*-test.js']
-    }
+    },
 
+    // Auto-magically rev, tag, npm publish
+    release: {
+      github: {
+        repo: 'matmar10/grunt-bower-update-main'
+      }
+    }
   });
 
   // Actually load this plugin's task(s).
@@ -63,6 +69,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-contrib-clean');
   grunt.loadNpmTasks('grunt-contrib-nodeunit');
+  grunt.loadNpmTasks('grunt-release');
 
   // Whenever the "test" task is run, first clean the "tmp" dir, then run this
   // plugin's task(s), then test the result.
