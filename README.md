@@ -20,11 +20,11 @@ grunt.loadNpmTasks('grunt-bower-update-main');
 ## The "bower_update_main" task
 
 ### Overview
-In your project's Gruntfile, add a section named `bower_update_main` to the data object passed into `grunt.initConfig()`.
+In your project's Gruntfile, add a section named `bowerUpdateMain` to the data object passed into `grunt.initConfig()`.
 
 ```js
 grunt.initConfig({
-  bower_update_main: {
+  bowerUpdateMain: {
     options: {
       // Task-specific options go here.
     },
@@ -37,53 +37,71 @@ grunt.initConfig({
 
 ### Options
 
-#### options.separator
+#### options.bowerFilename
 Type: `String`
-Default value: `',  '`
+Default value: `bower.json`
 
-A string value that is used to do something with whatever.
+Location of your bower.json file. By default, it is read from the project root.
 
-#### options.punctuation
-Type: `String`
-Default value: `'.'`
+#### options.bowerFileIndent
+Type: `Integer`
+Default value: `2`
 
-A string value that is used to do something else with whatever else.
+How many spaces should be used as indents within the generated bower.json file.
+
+#### options.outputFilename
+Type: `String|Boolean`
+Default value: `false`
+
+Specify an alternative location to use for the bower output file. By default, bower.json is overwritten.
+
+#### options.useBowerIgnore
+Type: `Boolean`
+Default value: `true`
+
+Whether your bower.json file's `ignore` property should be used to automatically exclude files from the generated
+array of files for the updated `main` property.
 
 ### Usage Examples
 
 #### Default Options
-In this example, the default options are used to do something with whatever. So if the `testing` file has the content `Testing` and the `123` file had the content `1 2 3`, the generated result would be `Testing, 1 2 3.`
+Simplest usage - specify the location of your source files and nothing else.
+In this example, all javascript files underneath the `app` folder are included.
 
 ```js
 grunt.initConfig({
-  bower_update_main: {
-    options: {},
-    files: {
-      'dest/default_options': ['src/testing', 'src/123'],
-    },
-  },
+  bowerUpdateMain: {
+    target: {
+      main: [
+        'app/**/*.js'
+      ]
+    }
+  }
 });
 ```
 
 #### Custom Options
-In this example, custom options are used to do something else with whatever else. So if the `testing` file has the content `Testing` and the `123` file had the content `1 2 3`, the generated result in this case would be `Testing: 1 2 3 !!!`
+This example includes all javascript in the project root except for bower and node modules
 
 ```js
 grunt.initConfig({
-  bower_update_main: {
-    options: {
-      separator: ': ',
-      punctuation: ' !!!',
-    },
-    files: {
-      'dest/default_options': ['src/testing', 'src/123'],
-    },
-  },
+  bowerUpdateMain: {
+    target: {
+      main: [
+        '**/*.js',
+        '!bower_components/**/*',
+        '!node_modules/**/*',
+        '!test/**/*'
+      ]
+    }
+  }
 });
 ```
 
 ## Contributing
-In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint and test your code using [Grunt](http://gruntjs.com/).
+In lieu of a formal style guide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint and test your code using [Grunt](http://gruntjs.com/).
 
 ## Release History
-_(Nothing yet)_
+
+* 0.1.0 - Initial release (works)
+* 0.1.x - Add documentation and test cases

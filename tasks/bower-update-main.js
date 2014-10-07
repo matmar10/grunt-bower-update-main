@@ -21,7 +21,7 @@ module.exports = function(grunt) {
     var options = this.options({
         bowerFilename: 'bower.json',
         bowerFileIndent: 2,
-        outputFilename: null,
+        outputFilename: false,
         useBowerIgnore: true
       }),
       bower,
