@@ -36,6 +36,18 @@ module.exports = function(grunt) {
           '**/*.js'
         ]
       },
+      defaultWithoutIgnore: {
+        options: {
+          outputFilename: '.tmp/default-bower-without-ignore.json',
+          useBowerIgnore: false
+        },
+        main: [
+          '**/*.js',
+          "!.tmp/**/*",
+          "!node_modules/**/*",
+          "!bower_components/**/*"
+        ]
+      },
       exampleProject1: {
         options: {
           bowerFilename: './test/fixtures/example-project-1-bower.json',

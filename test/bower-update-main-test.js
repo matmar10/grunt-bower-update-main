@@ -24,7 +24,6 @@ var grunt = require('grunt');
 
 exports.bowerUpdateMain = {
   setUp: function(done) {
-    // setup here if necessary
     done();
   },
 
@@ -33,6 +32,16 @@ exports.bowerUpdateMain = {
 
     var actual = grunt.file.read('bower.json');
     var expected = grunt.file.read('test/expected/default-bower.json');
+    test.equal(actual, expected, 'Grunt updates bower.json using default options');
+
+    test.done();
+  },
+
+  defaultWithoutIgnore: function (test) {
+    test.expect(1);
+
+    var actual = grunt.file.read('.tmp/default-bower-without-ignore.json');
+    var expected = grunt.file.read('test/expected/default-bower-without-ignore.json');
     test.equal(actual, expected, 'Grunt updates bower.json using default options');
 
     test.done();
