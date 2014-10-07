@@ -1,0 +1,42 @@
+{
+  "name": "grunt-bower-update-main",
+  "description": "Auto-update your bower.json `main` property to include all your module's souce files",
+  "version": "0.1.0",
+  "homepage": "https://github.com/matmar10/grunt-bower-update-main",
+  "author": {
+    "name": "Matthew J. Martin",
+    "email": "matthew.mar10@gmail.com",
+    "url": "http://matmar10.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/matmar10/grunt-bower-update-main.git"
+  },
+  "bugs": {
+    "url": "https://github.com/matmar10/grunt-bower-update-main/issues"
+  },
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "https://github.com/matmar10/grunt-bower-update-main/blob/master/LICENSE-MIT"
+    }
+  ],
+  "engines": {
+    "node": ">= 0.8.0"
+  },
+  "scripts": {
+    "test": "grunt test"
+  },
+  "devDependencies": {
+    "grunt-contrib-jshint": "^0.9.2",
+    "grunt-contrib-clean": "^0.5.0",
+    "grunt-contrib-nodeunit": "^0.3.3",
+    "grunt": "~0.4.5"
+  },
+  "peerDependencies": {
+    "grunt": "~0.4.5"
+  },
+  "keywords": [
+    "gruntplugin"
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "name": "example-project-1",
+  "main": [
+    "test/fixtures/example-project-1-files/example-directory/example-file-4.js",
+    "test/fixtures/example-project-1-files/example-file-1.js",
+    "test/fixtures/example-project-1-files/example-file-2.js",
+    "test/fixtures/example-project-1-files/example-file-3.js"
+  ],
+  "version": "0.0.1",
+  "authors": [
+    "Matthew J. Martin <matthew.mar10@gmail.com>"
+  ],
+  "description": "Example Project 1",
+  "license": "MIT",
+  "homepage": "http://www.example.com",
+  "private": true,
+  "ignore": [
+    "**/should-be-excluded.js",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "es5-shim": "~4.0.3",
+    "json3": "~3.3.2"
+  },
+  "devDependencies": {
+    "bootstrap": "~3.2.0"
+  }
+}
