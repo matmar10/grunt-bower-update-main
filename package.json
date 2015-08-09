@@ -1,7 +1,7 @@
 {
   "name": "grunt-bower-update-main",
   "description": "Auto-update your bower.json `main` property to include all your module's souce files",
-  "version": "0.1.7",
+  "version": "0.1.8",
   "homepage": "https://github.com/matmar10/grunt-bower-update-main",
   "author": {
     "name": "Matthew J. Martin",
