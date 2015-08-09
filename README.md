@@ -105,6 +105,7 @@ In lieu of a formal style guide, take care to maintain the existing coding style
 
 ## Release History
 
+* **0.1.8** - Add test coverage for tested directories
 * **0.1.7** - Add travis CI
 * **0.1.6** - Update jshint
 * **0.1.5** - Fix doc title
