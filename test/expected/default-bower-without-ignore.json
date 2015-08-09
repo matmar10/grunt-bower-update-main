@@ -8,7 +8,13 @@
     "test/fixtures/example-project-1-files/example-file-1.js",
     "test/fixtures/example-project-1-files/example-file-2.js",
     "test/fixtures/example-project-1-files/example-file-3.js",
-    "test/fixtures/example-project-1-files/should-be-excluded.js"
+    "test/fixtures/example-project-1-files/should-be-excluded.js",
+    "test/fixtures/example-project-2-files/example-directory/example-file-4.js",
+    "test/fixtures/example-project-2-files/example-directory/example-sub-directory/example-sub-sub-directory/example-file-5.js",
+    "test/fixtures/example-project-2-files/example-file-1.js",
+    "test/fixtures/example-project-2-files/example-file-2.js",
+    "test/fixtures/example-project-2-files/example-file-3.js",
+    "test/fixtures/example-project-2-files/should-be-excluded.js"
   ],
   "version": "0.0.1",
   "authors": [

@@ -57,6 +57,16 @@ module.exports = function(grunt) {
         main: [
           'test/fixtures/example-project-1-files/**/*.js'
         ]
+      },
+      exampleProject2: {
+        options: {
+          bowerFilename: './test/fixtures/example-project-2-bower.json',
+          bowerFileIndent: 2,
+          outputFilename: '.tmp/example-project-2-bower.json'
+        },
+        main: [
+          'test/fixtures/example-project-2-files/**/*.js'
+        ]
       }
     },
 
