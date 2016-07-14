@@ -19,54 +19,63 @@ Once the plugin has been installed, it may be enabled inside your Gruntfile with
 grunt.loadNpmTasks('grunt-bower-update-main');
 ```
 
-## The "bowerUpdateMain" task
+# The "bowerUpdateMain" task
 
-### Overview
+## Overview
 In your project's Gruntfile, add a section named `bowerUpdateMain` to the data object passed into `grunt.initConfig()`.
 
 ```js
 grunt.initConfig({
   bowerUpdateMain: {
     options: {
-      // Task-specific options go here.
+      // shared options
     },
     your_target: {
-      // Target-specific file lists and/or options go here.
+      src: [
+        // file patterns
+      ]
     },
   },
 });
 ```
 
-### Options
+## Options
 
-#### options.bowerFilename
+### options.bowerFilename
 Type: `String`
 Default value: `bower.json`
 
 Location of your bower.json file. By default, it is read from the project root.
 
-#### options.bowerFileIndent
+### options.bowerFileIndent
 Type: `Integer`
 Default value: `2`
 
 How many spaces should be used as indents within the generated bower.json file.
 
-#### options.outputFilename
+### options.outputFilename
 Type: `String|Boolean`
 Default value: `false`
 
 Specify an alternative location to use for the bower output file. By default, bower.json is overwritten.
 
-#### options.useBowerIgnore
+### options.useBowerIgnore
 Type: `Boolean`
 Default value: `true`
 
 Whether your bower.json file's `ignore` property should be used to automatically exclude files from the generated
 array of files for the updated `main` property.
 
-### Usage Examples
+### options.useBowerIgnore
+Type: `Array`
+Default value: `[]`
 
-#### Default Options
+An array of regular expressions to force-order your list of dependencies. This is useful, for example,
+in an angular application where the module must be defined first.
+
+## Usage Examples
+
+### Default Options
 Simplest usage - specify the location of your source files and nothing else.
 In this example, all javascript files underneath the `app` folder are included.
 
@@ -74,7 +83,7 @@ In this example, all javascript files underneath the `app` folder are included.
 grunt.initConfig({
   bowerUpdateMain: {
     target: {
-      main: [
+      src: [
         'app/**/*.js'
       ]
     }
@@ -82,29 +91,52 @@ grunt.initConfig({
 });
 ```
 
-#### Custom Options
-This example includes all javascript in the project root except for bower and node modules
+### Custom Options
+This example includes all javascript in the app directory except for bower libs
 
 ```js
 grunt.initConfig({
   bowerUpdateMain: {
     target: {
-      main: [
-        '**/*.js',
-        '!bower_components/**/*',
-        '!node_modules/**/*',
-        '!test/**/*'
+      src: [
+        'app/**/*.js',
+        '!app/bower_components/**/*.js'
       ]
     }
   }
 });
 ```
 
-## Contributing
+### Force ranked files
+
+This example includes all javascript in the project root except for bower and node modules
+
+```js
+grunt.initConfig({
+  bowerUpdateMain: {
+    target: {
+      options: [
+        rank: [
+          // module definition should go first
+          // e.g. `app.module.js` before its constituent files
+          /\.module\.js/
+        ]
+      ],
+      src: [
+        'app/**/*.js',
+        '!app/bower_components/**/*.js'
+      ]
+    }
+  }
+});
+```
+
+# Contributing
 In lieu of a formal style guide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint and test your code using [Grunt](http://gruntjs.com/).
 
-## Release History
+# Release History
 
+* **1.0.0** - Add rank option
 * **0.1.8** - Add test coverage for tested directories
 * **0.1.7** - Add travis CI
 * **0.1.6** - Update jshint

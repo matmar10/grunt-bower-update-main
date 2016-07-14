@@ -22,6 +22,7 @@ module.exports = function(grunt) {
         bowerFilename: 'bower.json',
         bowerFileIndent: 2,
         outputFilename: false,
+        rank: [],
         useBowerIgnore: true
       }),
       bower,
@@ -31,8 +32,8 @@ module.exports = function(grunt) {
       i;
 
     bower = grunt.file.readJSON(options.bowerFilename);
-    grunt.verbose.writeln('Existing bower `main` is:');
-    grunt.verbose.writeln(bower.main);
+    // grunt.verbose.writeln('Existing bower `main` is:');
+    // grunt.verbose.writeln(bower.main);
 
     // merge the ignores from `bower.json` as file exclusions in the expandable file array
     if (options.useBowerIgnore) {
@@ -43,11 +44,46 @@ module.exports = function(grunt) {
       }
     }
 
-    grunt.verbose.writeln('Unexpanded `main` file list is:');
-    grunt.verbose.writeln(unexpandedFiles);
+    bower.main = [];
 
-    // expand things like `**/*.js` and `!*.jade` to be included/excluded accordingly
-    bower.main = grunt.file.expand(unexpandedFiles);
+    if (options.rank.length) {
+      var ranked = [], rankedBatches;
+
+      rankedBatches = [];
+      this.filesSrc.forEach(function (file) {
+        var found = false, i;
+
+        for (i = 0; i < options.rank.length; i++) {
+          if (file.match(options.rank[i])) {
+            rankedBatches[i] = rankedBatches[i] || [];
+            rankedBatches[i].push(file);
+            found = true;
+            break;
+          }
+        }
+
+        if (!found) {
+          i++;
+          rankedBatches[i] = rankedBatches[i] || [];
+          rankedBatches[i].push(file);
+        }
+
+      }.bind(this));
+
+      for (i = 0; i < rankedBatches.length; i++) {
+        // TODO: not sure why we have an undefined element in the array
+        if (!rankedBatches[i]) {
+          continue;
+        }
+        ranked = ranked.concat(rankedBatches[i]);
+      }
+
+      bower.main = ranked;
+    } else {
+      this.files.forEach(function (file) {
+        bower.main.push(file.src);
+      });
+    }
 
     grunt.verbose.writeln('New `main` is:');
     grunt.verbose.writeln(bower.main);

@@ -32,42 +32,44 @@ module.exports = function(grunt) {
     bowerUpdateMain: {
       defaultOptions: {
         options: {},
-        main: [
+        src: [
           '**/*.js'
         ]
       },
-      defaultWithoutIgnore: {
-        options: {
-          outputFilename: '.tmp/default-bower-without-ignore.json',
-          useBowerIgnore: false
-        },
-        main: [
-          '**/*.js',
-          "!.tmp/**/*",
-          "!node_modules/**/*",
-          "!bower_components/**/*"
-        ]
-      },
-      exampleProject1: {
-        options: {
-          bowerFilename: './test/fixtures/example-project-1-bower.json',
-          bowerFileIndent: 4,
-          outputFilename: '.tmp/example-project-1-bower.json'
-        },
-        main: [
-          'test/fixtures/example-project-1-files/**/*.js'
-        ]
-      },
-      exampleProject2: {
-        options: {
-          bowerFilename: './test/fixtures/example-project-2-bower.json',
-          bowerFileIndent: 2,
-          outputFilename: '.tmp/example-project-2-bower.json'
-        },
-        main: [
-          'test/fixtures/example-project-2-files/**/*.js'
-        ]
-      }
+      //
+      // defaultWithoutIgnore: {
+      //   options: {
+      //     outputFilename: '.tmp/default-bower-without-ignore.json',
+      //     useBowerIgnore: false
+      //   },
+      //   src: [
+      //     '**/*.js',
+      //     "!.tmp/**/*",
+      //     "!node_modules/**/*.js",
+      //     "!bower_components/**/*.js"
+      //   ]
+      // },
+      // exampleProject1: {
+      //   options: {
+      //     bowerFilename: './test/fixtures/example-project-1-bower.json',
+      //     bowerFileIndent: 4,
+      //     outputFilename: '.tmp/example-project-1-bower.json'
+      //   },
+      //   src: [
+      //     'test/fixtures/example-project-1-files/**/*.js'
+      //   ]
+      // },
+      // exampleProject2: {
+      //   options: {
+      //     bowerFilename: './test/fixtures/example-project-2-bower.json',
+      //     bowerFileIndent: 2,
+      //     outputFilename: '.tmp/example-project-2-bower.json'
+      //   },
+      //   src: [
+      //     'test/fixtures/example-project-2-files/**/*.js'
+      //   ]
+      // }
+
     },
 
     // Unit tests.
